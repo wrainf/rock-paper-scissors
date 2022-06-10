@@ -1,4 +1,5 @@
 let moves = ["Rock","Paper","Scissors"]
+const buttons = document.querySelectorAll('button')
 
 function computerPlay(){
     let index = Math.round(Math.random()*2);
@@ -13,14 +14,18 @@ function playRound(playerMove, computerMove){
     playerMove === "scissors" && computerMove === "paper"){
         return "You WIN!";
     }
-    else if(computerMove === "rock" && playerMove === "scissors" || 
-    computerMove === "paper" && playerMove === "rock" ||
-    computerMove === "scissors" && playerMove === "paper"){
-        return `You Lose...${computerMove} beats ${playerMove} `;
-    }else{
+    else if(computerMove === playerMove){
         return "Draw!";
+    }else{
+        return `You Lose...${computerMove} beats ${playerMove} `;
     }
 }
+
+buttons.forEach( (button) => {
+    button.addEventListener('click', () => {
+        console.log(playRound(button.id,computerPlay()));
+    });
+});
 
 /*
 function game(){
