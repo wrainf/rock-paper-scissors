@@ -22,6 +22,7 @@ function playRound(playerMove, computerMove){
     }
 }
 
+/*
 function game(){
     let wins = 0,draws = 0, loses = 0;
     for (let index = 0; index < 5; index++) {
@@ -49,4 +50,4 @@ function game(){
     }
     
 }
-
+*/
