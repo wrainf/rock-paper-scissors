@@ -1,6 +1,6 @@
 @font-face {
-    font-family: Roboto;
-    src: url(./Roboto-Regular.ttf);
+    font-family: Monospace;
+    src: url(./Anonymous.ttf);
 }
 
 .container{
@@ -11,16 +11,25 @@
     align-items: center;
     justify-content: space-between;
     background-color: #f9faf8;
-    padding: 100px;
+    padding: 80px 100px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px 0px #acacac;
-}
-.outcome{
-    font-size: 50px;
+    gap: 32px;
 }
 
+
 *{
-    font-family: 'Roboto','sans-serif';
+    font-family: 'Monospace','sans-serif';
+}
+
+
+.header{
+    font-size: 50px;
+    margin-bottom: 8px;
+}
+
+.subtext{
+    margin-bottom: 32px;
 }
 
 body{
@@ -28,6 +37,7 @@ body{
     align-items: center;
     justify-content: center;
     padding: 50px;
+    flex-direction: column;
 }
 
 .score{
@@ -35,11 +45,7 @@ body{
     color: #1f2937;
 }
 
-.scores{
-    width: 400px;
-    display: flex;
-    justify-content: space-between;
-}
+
 
 button{
     width: 100px;
@@ -48,9 +54,37 @@ button{
     border-radius: 10px;
     border: 0px;
     box-shadow: 0px 5px 10px 0px #acacac;
+    font-size: 36px;
 }
 
 .player-moves{
     display: flex;
-    gap: 32px
+    gap: 32px;
+}
+
+.game-area{
+    display: flex;
+    width: 450px;
+    justify-content: space-between;
+}
+
+.player,
+.computer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.selection-box{
+    display: flex;
+    width: 200px;
+    height: 200px;
+    background-color: #f9faf8;
+    box-shadow: 0px 0px 10px 0px #acacac;
+    border-radius: 10px;
+    font-size: 100px;
+    justify-content: center;
+    align-items: center;
+    
 }

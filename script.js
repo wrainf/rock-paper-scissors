@@ -1,6 +1,9 @@
-let moves = ["Rock","Paper","Scissors"];
+let moves = ["🪨","📄","✂️"];
 const buttons = document.querySelectorAll('button');
-const outcomeBox = document.getElementById('round-outcome');
+
+const computerBox = document.getElementById('outcome-box-computer');
+const playerBox = document.getElementById('outcome-box-player');
+
 const computerScoreBox = document.getElementById('computerScore');
 const playerScoreBox = document.getElementById('playerScore');
 
@@ -18,9 +21,9 @@ function computerPlay(){
 function playRound(playerMove, computerMove){
     playerMove = playerMove.toLowerCase();
     computerMove = computerMove.toLowerCase();
-    if(playerMove === "rock" && computerMove === "scissors" || 
-    playerMove === "paper" && computerMove === "rock" ||
-    playerMove === "scissors" && computerMove === "paper"){
+    if(playerMove === "🪨" && computerMove === "✂️" || 
+    playerMove === "📄" && computerMove === "🪨" ||
+    playerMove === "✂️" && computerMove === "📄"){
         return 1;
     }
     else if(computerMove === playerMove){
@@ -32,28 +35,38 @@ function playRound(playerMove, computerMove){
 
 buttons.forEach( (button) => {
     button.addEventListener('click', () => {
-        let outcome = playRound(button.id,computerPlay());
+        let computerMove = computerPlay();
+        let outcome = playRound(button.id,computerMove);
         
-        updateScore(outcome);
-        showOutcome(outcome);
-        checkWin();
+
+        showOutcome(playerBox, button.id);
+
+        setTimeout(() =>{
+            showOutcome(computerBox, computerMove)
+            updateScore(outcome);
+            checkWin();
+            
+        },1000);
+
+        setTimeout(()=> {
+            resetImages();
+        }, 2000)
+        
+
+        
         
     });
 });
 
+function resetImages(){
+    showOutcome(computerBox, '❓');
+    showOutcome(playerBox, '❓');
+}
 
 
-function showOutcome(outcome){
-    // player wins
-    if(outcome === 1){
-        outcomeBox.textContent = "You Win!";
-    }
-    // computer wins
-    else if(outcome === -1){
-        outcomeBox.textContent = "You Lose!";
-    }else{
-        outcomeBox.textContent = "Draw..";
-    }
+
+function showOutcome(box, move){
+    box.textContent = move;
 }
 
 
@@ -85,7 +98,9 @@ function reset(){
     computerScore = 0;
     playerScoreBox.textContent = 0;
     computerScoreBox.textContent = 0;
-    outcomeBox.textContent = '';
+    
+    showOutcome(computerBox, '❓');
+    showOutcome(playerBox, '❓');
 }
 
 
