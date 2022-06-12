@@ -44,7 +44,10 @@ buttons.forEach( (button) => {
         setTimeout(() =>{
             showOutcome(computerBox, computerMove)
             updateScore(outcome);
-            checkWin();
+            
+            setTimeout(()=>{
+                checkWin()
+            },500);
             
         },1000);
 
